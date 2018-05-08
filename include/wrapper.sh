@@ -42,6 +42,6 @@ cat <<- EOF > /opt/kestrel/config.scala
 	  }
 	}
 EOF
-
+JVM_ARGS=${JVM_ARGS:-"-Xmx512m -Xms512m -XX:MaxPermSize=64m"}
 exec 2>&1
-exec java -jar /opt/kestrel/kestrel.jar -f /opt/kestrel/config.scala
+exec java ${JVM_ARGS} -jar /opt/kestrel/kestrel.jar -f /opt/kestrel/config.scala
